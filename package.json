@@ -1,0 +1,25 @@
+{
+  "name": "react-exercises",
+  "version": "1.0.0",
+  "description": "React exercises for frontend course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesus9ias/react-exercises.git"
+  },
+  "author": "Jesus Escamilla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesus9ias/react-exercises/issues"
+  },
+  "homepage": "https://github.com/jesus9ias/react-exercises#readme",
+  "devDependencies": {
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
