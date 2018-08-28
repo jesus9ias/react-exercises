@@ -64,7 +64,7 @@ class App extends React.Component {
     if (nextState.name === 'pepe') {
       return false;
     }
-    return true
+    return true;
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
