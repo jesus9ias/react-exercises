@@ -29,14 +29,14 @@ class App extends React.Component {
   }
 
   sumMultiple() {
-    /*  this.sumMore();
     this.sumMore();
     this.sumMore();
-    this.sumMore(); */
+    this.sumMore();
+    this.sumMore();
+    /*this.sumOne();
     this.sumOne();
     this.sumOne();
-    this.sumOne();
-    this.sumOne();
+    this.sumOne();*/
   }
 
   render() {

@@ -1,27 +1,4 @@
 
-class Card extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    const { name, age, techs, useTitle } = this.props;
-    return (
-      <div>
-        <h3><span>{useTitle ? 'Ing.' : ''}</span> {name}</h3>
-        <p>{age}</p>
-        {techs.map(tech => <p key={tech.value}>{tech.text}</p>)}
-      </div>
-    );
-  }
-}
-
-Card.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number,
-  techs: PropTypes.array,
-  useTitle: PropTypes.bool
-};
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +13,7 @@ class App extends React.Component {
     this.updateTechs = this.updateTechs.bind(this);
     this.updateUsingTitle = this.updateUsingTitle.bind(this);
   }
-  
+
   updateAge(e) {
     this.setState({
       age: e.target.value
@@ -61,7 +38,7 @@ class App extends React.Component {
       techs
     });
   }
-  
+
   updateUsingTitle(e) {
     this.setState({
       useTitle: e.target.checked
@@ -89,5 +66,28 @@ class App extends React.Component {
     );
   }
 }
+
+class Card extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    const { name, age, techs, useTitle } = this.props;
+    return (
+      <div>
+        <h3><span>{useTitle ? 'Ing.' : ''}</span> {name}</h3>
+        <p>{age}</p>
+        {techs.map(tech => <p key={tech.value}>{tech.text}</p>)}
+      </div>
+    );
+  }
+}
+
+Card.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number,
+  techs: PropTypes.array,
+  useTitle: PropTypes.bool
+};
 
 ReactDOM.render(<App />, document.getElementById("app"));

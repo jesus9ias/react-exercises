@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Storage from 'key-storage';
 import Login from '../views/Login';
 import Students from '../views/Students';
 import users from '../data/users';
@@ -13,11 +14,19 @@ export default () => class Authorize extends Component {
     isLoged: false
   };
 
+  static getDerivedStateFromProps(props, state) {
+    const isLoged = Storage.get('isLoged', false);
+    return {
+      isLoged
+    };
+  }
+
   doLogin(credentials) {
     const getLogin = users.find((user) => {
       return user.username === credentials.username && user.password === credentials.password;
     });
     if (getLogin) {
+      Storage.set('isLoged', true);
       this.setState({
         isLoged: true
       })

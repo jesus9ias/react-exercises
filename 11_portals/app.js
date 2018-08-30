@@ -43,8 +43,8 @@ class App extends React.Component {
     return (
       <div className="app">
         <p>Some Data</p>
-        <button onClick={this.openModal}>Show Modal</button>
         {this.state.isOpenModal ? <Modal closeModal={this.closeModal} /> : null}
+        <button onClick={this.openModal}>Show Modal</button>
       </div>
     );
   }

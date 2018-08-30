@@ -2,7 +2,7 @@
 class Message extends React.Component {
 
   componentDidMount() {
-    throw new Error('Ups!, its broken');
+    //  throw new Error('Ups!, its broken');
   }
 
   componentWillUnmount() {
