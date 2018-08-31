@@ -6,7 +6,7 @@ class App extends React.Component {
     result: 0
   }
 
-  sumNumbers(e) {
+  /*sumNumbers(e) {
     e.preventDefault();
     const result = this.state.num1 + this.state.num2;
     this.setState({
@@ -24,9 +24,9 @@ class App extends React.Component {
     this.setState({
       num2: e.target.value
     });
-  }
+  }*/
 
-  /*sumNumbers = (e) => {
+  sumNumbers = (e) => {
     e.preventDefault();
     const result = Number(this.state.num1) + Number(this.state.num2);
     this.setState({
@@ -44,7 +44,7 @@ class App extends React.Component {
     this.setState({
       num2: e.target.value
     });
-  }*/
+  }
 
   render() {
     return (
