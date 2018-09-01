@@ -18,6 +18,7 @@ class Message extends React.Component {
   };
 }
 
+
 const App = () => <div>
   <Message text={'ok'} bold />
   <Message bold />
