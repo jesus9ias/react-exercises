@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = (props) => {
+const LoadMore = (props) => {
   return (
     <div className="row mb-2">
       <div className="mx-auto">
@@ -10,4 +10,4 @@ const Button = (props) => {
   );
 }
 
-export default Button;
+export default LoadMore;

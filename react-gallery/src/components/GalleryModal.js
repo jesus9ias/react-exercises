@@ -1,18 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Preloader from './Preloader';
 
-const GalleryModal = (props) => {
-  if (props.isOpen === false) {
-  return null;
+class GalleryModal extends Component {
+  state = {
+    isOpen: false,
+    image: null
   }
 
-  return (
-    <div isOpen={props.isOpen} className='modal-overlay' onClick={props.onClick} name={props.name}>
-      <div className='modal-body'>
-      <a className='modal-close' href='#' onClick={props.onClick}><span className='fa fa-times'></span></a>
-      <img src={props.src} alt="modal"/>
+  componentDidMount() {
+    global.eventHub.addListener('openModal', (image) => {
+      this.setState({
+        image,
+        isOpen: true
+      });
+    });
+  }
+
+  close = () => {
+    this.setState({
+      isOpen: false
+    });
+  }
+
+  modal = () => {
+    const {
+      description,
+      likes,
+      downloads
+    } = this.state.image;
+    return (
+      <div className='modal-overlay'>
+        <div className='modal-body'>
+          <a className='modal-close' onClick={this.close}><span className='fa fa-times'></span></a>
+          <Preloader image={this.state.image} />
+          <p>{description}</p>
+          <p><i className={'fa fa-thumbs-up'} aria-hidden="true"></i> {likes}</p>
+          <p><i className={'fa fa-download'} aria-hidden="true"></i> {downloads}</p>
+        </div>
       </div>
-    </div>
-  );
+    )
+  }
+
+  render() {
+    return this.state.isOpen ? this.modal() : null;
+  }
 }
 
 export default GalleryModal;

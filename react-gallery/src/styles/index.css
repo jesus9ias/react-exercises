@@ -71,6 +71,7 @@ body {
   overflow: auto;
   border-radius: 4px;
   transform: translate(-50%, -50%);
+  background: white;
 }
 
 .modal-close {
@@ -89,4 +90,9 @@ img.card-img-top {
   width: 100%; /* You can set the dimensions to whatever you want */
   height: 200px;
   object-fit: cover;
+}
+
+.imageloader {
+  max-height: 500xp;
+  overflow: hidden;
 }

@@ -10,7 +10,7 @@ class Operation extends Component {
     let vocals = 0
     while (i--) {
       const character = input.charAt(i);
-      if (character.match(/a|e|i|o|u/g)) {
+      if (character.match(/a|e|i|o|u|A|E|I|O|U/g)) {
         vocals++;
       }
     }
