@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import StudentList from './StudentsList';
 
-class Students extends Component {
+class StudentsInactive extends Component {
   render() {
     return (
       <div className="Students">
-        <StudentList status={1} />
+        <StudentList status={0} />
       </div>
     );
   }
 }
 
-export default Students;
+export default StudentsInactive;

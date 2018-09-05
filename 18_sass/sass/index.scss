@@ -1,3 +1,10 @@
+$main_border: black;
+$button_success: green;
+$button_warning: orange;
+$button_error: red;
+$button_default_font: black;
+$button_font: white;
+
 body {
   margin: 0px;
 }
@@ -5,7 +12,7 @@ body {
 .main {
   margin: 10px;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid $main_border;
   &__title {
     margin: 5px;
     text-align: center;
@@ -26,21 +33,21 @@ body {
 .button {
   width: 200px;
   margin: auto;
-  color: black;
+  color: $button_default_font;
   &--success {
-    color: white;
-    background: green;
+    color: $button_font;
+    background: $button_success;
   }
   &--warning {
-    color: white;
-    background: orange;
+    color: $button_font;
+    background: $button_warning;
   }
   &--error {
-    color: white;
-    background: red;
+    color: $button_font;
+    background: $button_error;
   }
-  &--success {
-    color: white;
-    background: green;
+  &--big {
+    font-size: 32px;
+    padding: 10px;
   }
 }

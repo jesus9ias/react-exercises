@@ -5,6 +5,7 @@ import Home from '../views/Home';
 import About from '../views/About';
 import Profile from '../views/Profile';
 import Students from '../views/Students';
+import StudentsInactive from '../views/Students/StudentsInactive';
 import ProfileData from '../views/Profile/ProfileData';
 import EditStudent from '../views/Students/EditStudent';
 import ProfilePassword from '../views/Profile/ProfilePassword';
@@ -16,6 +17,7 @@ class RouterHandler extends Component {
         <App>
           <Route exact path="/" component={Home}/>
           <Route exact path="/students" component={Students} />
+          <Route exact path="/students/inactive" component={StudentsInactive} />
           <Route exact path="/students/:id" component={EditStudent} />
           <Route exact path="/about" component={About}/>
           <Route exact path="/profile" component={Profile} />
