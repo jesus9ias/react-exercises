@@ -23,6 +23,7 @@
     "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
-    "guid": "0.0.12"
+    "guid": "0.0.12",
+    "react-bootstrap": "^0.32.4"
   }
 }

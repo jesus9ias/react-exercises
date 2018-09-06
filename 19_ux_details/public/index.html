@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="root">
+      <style type="text/css" rel="stylesheet">
+        body {
+          margin: 0px;
+          font-family: 'Arial';
+        }
+      
+        .mainLoading {
+          display: flex;
+          background: #0022cc;
+          height: 100vh;
+        }
+      
+        .content {
+          width: 100%;
+          margin: auto 0px;
+        }
+      
+        .loading__title {
+          margin: 0px;
+          padding: 10px;
+          font-size: 20px;
+          color: white;
+          text-align: center;
+        }
+      
+        .main__loading {
+          display: block;
+          margin: 10px auto;
+        }
+      
+        .noscript__text {
+          color: white;
+          padding: 10px;
+          font-size: 14px;
+          text-align: center;
+        }
+      
+        .rotateAnim {
+          -webkit-animation-name: spin;
+          -webkit-animation-duration: 600ms;
+          -webkit-animation-iteration-count: infinite;
+          -webkit-animation-timing-function: linear;
+      
+          -moz-animation-name: spin;
+          -moz-animation-duration: 600ms;
+          -moz-animation-iteration-count: infinite;
+          -moz-animation-timing-function: linear;
+      
+          animation-name: spin;
+          animation-duration: 600ms;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+      
+        @-moz-keyframes spin {
+          from {
+            -moz-transform: rotate(0deg);
+          }
+          to {
+            -moz-transform: rotate(360deg);
+          }
+        }
+      
+        @-webkit-keyframes spin {
+          from {
+            -webkit-transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+          }
+        }
+      
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+      <div class="mainLoading">
+        <div class="content">
+          <h2 class="loading__title">Bienvenido a tu nueva App</h2>
+          <img class="main__loading rotateAnim" src="%PUBLIC_URL%/loading_white.png" width="64px" />
+          <noscript>
+            <p class="noscript__text">Necesita tener activado javascript en su navegador para poder usar esta aplicación</p>
+          </noscript>
+        </div>
+      </div>
+    </div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
