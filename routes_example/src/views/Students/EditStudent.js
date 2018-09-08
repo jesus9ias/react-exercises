@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import students from '../../data/students';
 import courses from '../../data/courses';
 import OneStudent from './OneStudent';
+import {
+  Button,
+  ButtonGroup
+} from 'react-bootstrap';
 
 class EditStudent extends Component {
   getStudent = () => {
@@ -34,16 +38,16 @@ class EditStudent extends Component {
     return (
       <div>
         <OneStudent student={this.state.student} />
-        <div>
+        <ButtonGroup name="student_courses">
           {
             this.state.courses.filter((c) => {
               return c.students.indexOf(this.state.student.id) > -1
             })
             .map((course) => {
-              return <p key={course.id}>{course.name}</p>
+              return <Button key={course.id}>{course.name}</Button>
             })
           }
-        </div>
+        </ButtonGroup>
       </div>
     );
   }

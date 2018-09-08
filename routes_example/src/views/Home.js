@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Jumbotron,
+  Button
+} from 'react-bootstrap';
 
 class Home extends Component {
   render() {
     return (
-      <div className="Home">
-        <h2>Home</h2>
-        <Link to="/students">Students</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/about">About</Link>
-      </div>
+      <Jumbotron>
+        <h1>Hello, Again</h1>
+        <p>
+          This is a simpe student repository App.
+        </p>
+        <Button bsStyle="primary" href="/students">Students</Button>
+        <Button bsStyle="success" href="/profile">Profile</Button>
+        <Button bsStyle="info" href="/about">About</Button>
+      </Jumbotron>
     );
   }
 }

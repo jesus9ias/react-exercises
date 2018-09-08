@@ -1,7 +1,26 @@
 import React from 'react';
-import logo from '../images/logo.svg';
+import {
+  Nav,
+  Navbar,
+  NavItem
+} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-export default () => <header className="App-header">
-  <img src={logo} className="App-logo" alt="logo" />
-  <h1 className="App-title">Welcome to React</h1>
-</header>
+export default () => <Navbar>
+  <Navbar.Header>
+    <Navbar.Brand>
+      <Link to="/">Students List</Link>
+    </Navbar.Brand>
+  </Navbar.Header>
+  <Nav>
+    <NavItem eventKey={1} href="/students">
+      Students
+    </NavItem>
+    <NavItem eventKey={2} href="/profile">
+      Profile
+    </NavItem>
+    <NavItem eventKey={2} href="/about">
+      About
+    </NavItem>
+  </Nav>
+</Navbar>;
