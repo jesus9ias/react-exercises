@@ -4,7 +4,7 @@ import ImageLoader from 'react-load-image';
 const spinner = "https://loading.io/spinners/fidget-spinner/lg.fidget-spinner.gif";
 
 export default (props) => <ImageLoader
-  src={props.openModal ? props.image.urls.thumb : props.image.urls.full }
+  src={props.url}
 >
   {
     props.openModal ? (<img

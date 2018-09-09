@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Storage from 'key-storage';
 import LoadMore from '../components/LoadMore';
 import ImagesGrid from '../components/ImagesGrid';
@@ -39,27 +40,40 @@ class Gallery extends Component{
     });
   }
   
-  addFavoriteHandler = (index) => {
+  addFavoriteHandler = (id) => {
     const favorites = this.state.favorites;
     const imgs = this.state.imgs;
-    if (favorites.length <= 4) {
-      const newFav = imgs[index];
-      if (!favorites.find(img => img.id === newFav.id)) {
-        const newFavs = [...favorites, newFav];
-        const newImgs = imgs.filter((_, i) => i !== index);
-        Storage.set('favorites', JSON.stringify(newFavs));
-        Storage.set('images', JSON.stringify(newImgs));
-        this.setState({
-          favorites: newFavs,
-          imgs: newImgs
-        });
-      }
+    /*  if (favorites.length <= 4) {
+      
+    } */
+    const newFav = imgs.find((img) => img.id === id);;
+    if (!favorites.find(img => img.id === newFav.id)) {
+      const newFavs = [...favorites, newFav];
+      const newImgs = imgs.filter((img) => img.id !== id);
+      Storage.set('favorites', JSON.stringify(newFavs));
+      Storage.set('images', JSON.stringify(newImgs));
+      this.setState({
+        favorites: newFavs,
+        imgs: newImgs
+      });
     }
   }
 
-  deleteFavoriteHandler = (index) => {
-    const favorites = this.state.favorites.filter((_, i) => i !== index);
-    const imgs = [this.state.favorites[index], ...this.state.imgs];
+  deleteFavoriteHandler = (id) => {
+    const image = this.state.favorites.find((img) => img.id === id);
+    const favorites = this.state.favorites.filter((img) => img.id !== id);
+    const imgs = [image, ...this.state.imgs];
+    Storage.set('favorites', JSON.stringify(favorites));
+    Storage.set('images', JSON.stringify(imgs));
+    this.setState({
+      favorites,
+      imgs
+    });
+  }
+
+  remove = (id) => {
+    const favorites = this.state.favorites.filter(img => img.id !== id);
+    const imgs = this.state.imgs.filter(img => img.id !== id);
     Storage.set('favorites', JSON.stringify(favorites));
     Storage.set('images', JSON.stringify(imgs));
     this.setState({
@@ -70,26 +84,57 @@ class Gallery extends Component{
 
   render() {
     const { imgs, favorites } = this.state;
+    const { maxFavorites, maxGallery, useFavorites, useGallery } = this.props;
     return(
     <div
       refs='gallery-container'
       className='container-fluid gallery-container'
     >
-      <FavoritesGrid
-        imgs={favorites}
-        action={this.deleteFavoriteHandler}
-      />
-      <ImagesGrid
-        imgs={imgs}
-        action={this.addFavoriteHandler}
-      />
-      <LoadMore
-        onLoadMore={this.loadMoreHandler}
-      />
+      {
+        useFavorites ? <FavoritesGrid
+            imgs={favorites}
+            remove={this.remove}
+            maxFavorites={maxFavorites}
+            action={this.deleteFavoriteHandler}
+          />
+        :
+          null
+      }
+      {
+        useGallery ? <ImagesGrid
+            imgs={imgs}
+            remove={this.remove}
+            maxGallery={maxGallery}
+            action={this.addFavoriteHandler}
+          />
+        :
+          null
+      }
+      {
+        useGallery ? <LoadMore
+            onLoadMore={this.loadMoreHandler}
+          />
+        :
+          null
+      }
       <GalleryModal />
     </div>
     )
   }
  }
+
+Gallery.propTypes = {
+  maxFavorites: PropTypes.number,
+  maxGallery: PropTypes.number,
+  useFavorites: PropTypes.bool,
+  useGallery: PropTypes.bool
+};
+
+Gallery.defaultProps = {
+  maxFavorites: 0,
+  maxGallery: 0,
+  useFavorites: true,
+  useGallery: true
+};
 
  export default Gallery;

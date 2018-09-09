@@ -1,5 +1,8 @@
 import React from 'react';
+import {
+  Typography
+} from '@material-ui/core';
 
-export default (props) => <div className="col-12">
-  <h4>{props.children}</h4>
-</div>
+export default (props) => <Typography variant="title" gutterBottom>
+  {props.children}
+</Typography>

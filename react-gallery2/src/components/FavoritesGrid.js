@@ -1,24 +1,51 @@
 import React from 'react';
+import {
+  Grid,
+  Typography
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import Title from './Title';
-import Section from './Section';
 import GalleryImage from './GalleryImage';
 
-const FavoritesGrid = (props) => {
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
+
+const FavoritesGrid = ({ classes, imgs, action, maxFavorites, remove }) => {
+  const images = maxFavorites === 0 || imgs.length <= maxFavorites ? imgs : imgs.slice(imgs.length - maxFavorites);
   return (
-    <div className="row">
+    <div className={classes.root}>
       <Title>Favorites</Title>
-      <Section>
+      <Grid container spacing={24}>
         {
-          props.imgs.map((img, index) => {
-            return <GalleryImage img={img} index={index} key={img.id} imageAction={props.action} btnClass="btn-warning" icon="fa-times"/>
+          images.map((img) => {
+            return (
+              <Grid item xs={12} sm={6} md={3} key={img.id}>
+                <GalleryImage
+                  remove={remove}
+                  img={img}
+                  imageAction={action}
+                  isFavorite={true}
+                />
+              </Grid>
+            );
           })
         }
         {
-          props.imgs.length === 0 ? <p>No Images</p> : null
+          images.length === 0 ? (<Typography variant="caption" gutterBottom align="center">
+            There is not favorite images
+          </Typography>) : null
         }
-      </Section>
+      </Grid>
     </div>
   );
 }
 
-export default FavoritesGrid;
+export default withStyles(styles)(FavoritesGrid);
